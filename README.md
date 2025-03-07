@@ -17,6 +17,7 @@ gcc cat.c -o cat
 
 ## 2. mycp.c
 Copies a file from the source to the destination. The destination can be either a file with a different name or a directory.
+![image](https://github.com/user-attachments/assets/227a534d-b377-4cd9-a13b-53ea1752f8ea)
 
 **Compilation Command:**
 ```bash
