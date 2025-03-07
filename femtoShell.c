@@ -9,17 +9,19 @@
 // ****************            YOU CAN SEE Description in README file 
 int main(int argc, char *argv[])
 {
+	//  get the user name 
 	char *username;
 	if ((username = getlogin()) == NULL)
 		exit(0);
-	//	printf("%s",username);
 	char cmd[50] = {'\n'};
+	
 	while (1)
 	{
 		printf("%s >", username);
 		int i = 0;
 		unsigned char ch = '#';
-
+		
+                // looping to get chars until the user hits ENTER
 		while (ch != '\n')
 		{
 			ch = (unsigned char)getchar();
@@ -30,16 +32,17 @@ int main(int argc, char *argv[])
 
 		// tokenize the input
 		char *token = strtok(cmd, " ");
-
+                
 		if (!strcmp(token, "echo"))
-		{
-			
+		{    
+			// token and echo are identical	
 			while (token != NULL)
 			{
-				token = strtok(NULL, " ");  // continue
+				token = strtok(NULL, " ");  // continue tokenizing
 				if(token != NULL )printf("%s ", token);
 			}
-			printf("\n");
+			//carriage return 
+			printf("\r");
 		}
 		else if (!strcmp(token, "exit"))
 		{
