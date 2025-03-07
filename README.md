@@ -72,4 +72,19 @@ gcc mypwd.c -o mypwd
 ```bash
 ./mypwd
 ```
+## 5-femtoShell.c
+small shell works with echo and exit cmds
+![image](https://github.com/user-attachments/assets/a2b2754b-a8da-415e-ae01-1c5b585004cd)
+**Compilation Command:**
+```bash
+gcc femtoShell.c -o femto 
+```
+
+**Usage Example:**
+```bash
+./femto
+
+```
+![image](https://github.com/user-attachments/assets/f8f12673-e455-4d9a-a7ff-0877c26ee3b8)
+
 
