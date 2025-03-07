@@ -6,6 +6,7 @@
 #include <errno.h>
 #include <string.h>
 
+// ****************            YOU CAN SEE Description in README file 
 int main(int argc, char *argv[])
 {
 	char *username;
