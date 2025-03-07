@@ -55,8 +55,10 @@ int main(int argc, char *argv[])
         int length = strlen(argv[2]);
         char dest[length * 2]; 
         sprintf(dest, "%s/%s", argv[2], srcName);
-        if(strcmp(dest,srcPath))
+        //comapare the src path with dest path 
+        if(!strcmp(dest,srcPath))
         {
+            //two paths are identical
            printf("'%s' and '%s'two files have the same name \n",dest,srcPath);
            exit(0);
         }
