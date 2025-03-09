@@ -84,6 +84,77 @@ gcc femtoShell.c -o femto
 ```bash
 ./femto
 
+
+
+# Pico Shell
+
+Pico Shell is a simple command-line interpreter that extends the functionality of a (femto shell). It handles both built-in commands and external commands by forking a new process and executing the provided arguments.
+
+## Compilation commmand
+To compile the Pico Shell:
+
+```bash
+gcc picoshell.c -o pico
+```
+
+## Features
+- Supports built-in commands:
+  - `cd` (change directory)
+  - `pwd` (print working directory)
+  - `echo` (print arguments)
+  - `exit` (terminate the shell)
+- Executes external programs (e.g., `ls`, `vim`, `cat`, `sed`, etc.)
+- Displays the current user and working directory in the prompt.
+
+## Examples of Commands
+
+### 1. **Changing Directories**
+```bash
+sheko:/home/sheko/Documents/sysprog/codes$ cd ~
+sheko:/home/sheko$
+
+sheko:/home/sheko$ cd /
+sheko:/$
+```
+
+### 2. **Opening and Editing Files**
+```bash
+sheko:/home/sheko/Documents/sysprog/codes$ vim test.txt
+```
+
+### 3. **Viewing File Contents**
+```bash
+sheko:/home/sheko/Documents/sysprog/codes$ cat test.txt
+hello world
+```
+
+### 4. **Using External Programs**
+```bash
+sheko:/home/sheko/Documents/sysprog/codes$ sed 's/world/linux/' test.txt
+hello linux
+```
+
+### 5. **Navigating Up the Directory Structure**
+```bash
+sheko:/home/sheko/Documents/sysprog/codes$ cd ..
+sheko:/home/sheko/Documents/sysprog$ ls
+codes  ppt  ref  simple-shell-sources  simple-utility-sources
+```
+
+### 6. **Handling Invalid Directories**
+```bash
+sheko:/home/sheko/Documents/sysprog/simple-shell-sources/ff$ cd unknowndir
+pico shell:cd: /home/sheko/Documents/sysprog/simple-shell-sources/ff: No such file or directory
+```
+
+## Exit the Shell
+To exit the Pico Shell, use the `exit` command:
+
+```bash
+sheko:/home/sheko$ exit
+bye bye friend
+```
+
 ```
 ![image](https://github.com/user-attachments/assets/f8f12673-e455-4d9a-a7ff-0877c26ee3b8)
 
