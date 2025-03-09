@@ -156,6 +156,113 @@ sheko:/home/sheko$ exit
 bye bye friend
 ```
 
+# Nano Shell - Features Overview
+
+## New Features
+
+### 1. Local Variable Management
+
+#### Adding Local Variables
+- **Structure Definition:**
+  ```c
+  // Local Variable Structure
+  typedef struct {
+      char *key; // Pointer to the variable name
+      char *val; // Pointer to the variable value
+  } local_var_struct;
+
+  // Array of pointers to local variable structures (supports up to 10 variables)
+  local_var_struct *local_var_st[10];
+  ```
+
+- **Functionality:**
+  - Each local variable is stored in a `local_var_struct`.
+  - A new structure is allocated for every variable added.
+  - The first available (NULL) index in the `local_var_st` array is located and assigned to the new structure.
+
+#### Removing Local Variables
+- Searches the `local_var_st` array for a specified key.
+- Frees the memory allocated for the matching structure.
+- Sets the corresponding index to `NULL` to mark it as available.
+
+#### Printing Local Variables
+- Iterates through the `local_var_st` array.
+- Displays all stored **keys** and **values**.
+
+#### Local Variable Scope Limitation
+- Local variables are only available within the current process.
+- When a new process (such as a child shell) is created using `execvp()`, local variables are **not inherited**.
+
+Example:
+```bash
+$ x=5
+$ y=10
+$ set
+x=5
+y=10
+$ ./nano  # Start a new shell
+$ set
+# No output - local variables are not inherited.
+```
+
+### 2. Environment Variable Management
+
+#### External Environment Reference
+- Utilizes the global `environ` variable to manage environment variables:
+  ```c
+  extern char **environ; // Access to the environment variables
+  ```
+
+#### Adding Environment Variables
+- Uses the `putenv()` function to add environment variables.
+- Accepts a **key** and **value** to add them to the environment.
+
+#### Removing Environment Variables
+- Uses the `unsetenv()` function to remove environment variables.
+- Accepts the **key** to identify and delete the environment variable.
+
+#### Environment Variable Inheritance
+- Environment variables are inherited by child processes.
+
+Example:
+```bash
+$ export v=value
+success
+$ ./nano  # Start a new shell
+$ env
+...
+v=value
+```
+
+### 3. Executing External Programs
+
+#### Using `execvp()`
+- Executes a new process while inheriting the current environment variables.
+- Syntax:
+  ```c
+  int execvp(const char *file, char *const argv[]);
+  ```
+  - **file**: The name of the executable.
+  - **argv**: An array of argument strings (NULL-terminated).
+
+- **Behavior:**
+  - Replaces the current process image with a new one.
+  - Inherits the existing environment variables automatically.
+
+#### Why Not `execvpe()`?
+- `execvpe()` allows specifying custom environment variables but is deprecated and not available on most modern Linux distributions.
+
+## Usage
+
+- **Add Local Variable:** Stores a key-value pair in the local variable array.
+- **Remove Local Variable:** Deletes a key-value pair from the local variable array.
+- **Print Local Variables:** Displays all stored key-value pairs.
+- **Add Environment Variable:** Uses `putenv()` to add a new environment variable.
+- **Remove Environment Variable:** Uses `unsetenv()` to delete an existing environment variable.
+- **Execute External Program:** Uses `execvp()` to run external programs while preserving the current environment.
+
+
+
 
 
 
