@@ -169,6 +169,8 @@ int main(int argc, char *argv[])
 				}
 			}
 		}
+
+		/*^^^^^^^^^^^^^^^^^^^^^    ADDING local Vars           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/			
 		else if (num_args == 1 && firsteq != NULL)
 		{
 			// make sure arg has "="
