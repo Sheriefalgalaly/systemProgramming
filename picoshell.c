@@ -74,7 +74,11 @@ int main(int argc, char *argv[])
 			{
 				token = strtok(NULL, " "); // continue
 				if (token != NULL)
-					printf("%s ", token);
+				// printf("%s \n", token);
+				{
+					write(1, token, strlen(token));
+					write(1," ",1);
+				}
 			}
 			printf("\r");
 		}
