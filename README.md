@@ -179,6 +179,12 @@ bye bye friend
   - Each local variable is stored in a `local_var_struct`.
   - A new structure is allocated for every variable added.
   - The first available (NULL) index in the `local_var_st` array is located and assigned to the new structure.
+## Compilation commmand
+To compile the Nano Shell:
+
+```bash
+gcc nanoshell.c -o nano
+```
 
 #### Removing Local Variables
 - Searches the `local_var_st` array for a specified key.
