@@ -84,6 +84,7 @@ gcc femtoShell.c -o femto
 ```bash
 ./femto
 ```
+![image](https://github.com/user-attachments/assets/f8f12673-e455-4d9a-a7ff-0877c26ee3b8)
 
 
 # Pico Shell
@@ -155,7 +156,6 @@ sheko:/home/sheko$ exit
 bye bye friend
 ```
 
-```
-![image](https://github.com/user-attachments/assets/f8f12673-e455-4d9a-a7ff-0877c26ee3b8)
+
 
 
