@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 					write(1," ",1);
 				}
 			}
-			printf("\r");
+			printf("\n\r");
 		}
 		/*^^^^^^^^^^^^^^^^^^^^^    EXIT            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 		else if (!strcmp(token, "exit"))
