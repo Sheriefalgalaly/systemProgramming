@@ -6,9 +6,9 @@
 #include <errno.h>
 #include <string.h>
 #include <sys/wait.h>
+/*                                      YOU CAN SEE DOCUMENTATION IN REEADME FILE          */
 
 #define BUF_SIZE 100
-
 int main(int argc, char *argv[])
 {
 	// Creating Local var
