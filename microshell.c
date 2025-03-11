@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
 				if (token != NULL )
 				{
 					dollar = strrchr(token, '$');
-					val = getenv(dollar + 1);
+					if(dollar!= NULL) val = getenv(dollar + 1);
 				}
 				// search the temp key in environemnt var
 				if (val != NULL)
