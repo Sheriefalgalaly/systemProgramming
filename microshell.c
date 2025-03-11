@@ -58,7 +58,8 @@ int main(int argc, char *argv[])
 		// at each new prompt get the current working directory to display
 		/*____________________________________________________*/
 		getcwd(cwd, 100);
-		printf("%s:%s$ ", username, cwd);
+		//colored username and directory
+		printf("\033[1;32m%s\033[0m:\033[1;34m%s\033[0m$ ", username, cwd);
 
 		int i = 0;
 
