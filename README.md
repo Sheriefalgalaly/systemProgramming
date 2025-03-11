@@ -269,6 +269,121 @@ v=value
 
 
 
+# Microshell&#x20;
+
+This project implements a simple shell (microshell) that supports handling **input**, **output**, and **error** redirection operations.
+
+## Features
+
+- **Input Redirection (****`<`****)**: Read from a file instead of standard input (stdin).
+- **Output Redirection (****`>`****)**: Write output to a file instead of standard output (stdout).
+- **Error Redirection (****`2>`****)**: Write error messages to a file instead of standard error (stderr).
+- **Command Execution**: Execute external programs with proper redirection.
+
+## How It Works
+
+1. **Parse the Command:**
+   - Identify the redirection operators (`<`, `>`, `2>`).
+2. **Open Files:**
+   - For `>`, open the file in write mode (create if not exists, truncate if exists).
+   - For `2>`, open the file in write mode for error output.
+   - For `<`, open the file in read mode.
+3. **Redirect Output/Input:**
+   - Use `dup2()` to redirect file descriptors to stdin (0), stdout (1), or stderr (2).
+4. **Execute the Program:**
+   - Execute the command using `execvp()` while preserving the redirection.
+
+## Examples
+
+### Example 1: Redirect Output and Error
+
+Given the following Python script `py`:
+
+```python
+#!/usr/bin/env python3
+
+# Simple Python Program: Greeting
+
+# Print a welcome message
+print("Hello! Welcome to the program.")
+
+# Ask for the user's name
+# name = input("What's your name? ")
+
+# Greet the user
+print(f"Nice to meet you, {name}!")
+
+# Ask for the user's age and respond
+# age = int(input("How old are you? "))
+print(f"Wow, {age} years old! That's awesome.")
+```
+
+When you run the script with output and error redirection:
+
+```bash
+python3 ./py >output 2>error
+```
+
+- **`output`** will contain standard output:
+
+```bash
+$ cat output
+Hello! Welcome to the program.
+```
+
+- **`error`** will capture errors:
+
+```bash
+$ cat error
+Traceback (most recent call last):
+  File "./py", line 12, in <module>
+    print(f"Nice to meet you, {name}!")
+NameError: name 'name' is not defined
+```
+
+### Example 2: Redirect Input and Output
+
+Suppose we want to filter lines containing the word `print` from the error file and save the result to a new file:
+
+```bash
+grep print <error >output
+```
+
+- **`output`** will now contain:
+
+```bash
+$ cat output
+    print(f"Nice to meet you, {name}!")
+```
+
+
+## Notes
+
+-  **edge cases** are handled like missing files or invalid commands or writing in directoy i haven't permissions to write in
+```bash
+sheko:/home/sheko/Documents/sysprog/codes$ cd /
+sheko:/$ echo hello >text
+the shell could not open the file for writing
+```
+
+## Compilation
+
+To compile the microshell:
+
+```bash
+gcc microshell.c -o microshell
+```
+
+## Running the Microshell
+
+Start the microshell:
+
+```bash
+./microshell
+```
+
+
+
 
 
 
