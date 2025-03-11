@@ -405,7 +405,7 @@ void open_input(char *file)
 
 	if ((fd_in = open(file, O_RDONLY)) < 0)
 	{
-		printf("he shell could not open the file for reading in \n");
+		printf("the shell could not open the file for reading in \n");
 		exit(-1);
 	}
 
@@ -438,7 +438,7 @@ void open_output(char *file)
 	// //open output file
 	if ((fd_out = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644)) < 0)
 	{
-		printf("he shell could not open the file for writing\n");
+		printf("the shell could not open the file for writing\n");
 		exit(-1);
 	}
 	// printf("fff\n");
